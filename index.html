@@ -25,6 +25,9 @@
 
         game.startScreen.addEventListener('click', gameStart);
 
+        document.addEventListener('keydown', onKeyDown);
+        document.addEventListener('keyup', onKeyUp);
+
         function gameStart() {
             // Change screens
             game.startScreen.classList.add('hidden');
@@ -35,12 +38,30 @@
         }
 
         function gameLoop() {
-            console.log('loop');
+            let { wizard } = state;
+            let { wizardElement } = game;
+
+            // User input
+            if (state.keys.KeyW) {
+                wizard.y -= wizard.speed;
+            }
+
+            // Render
+            wizardElement.style.top = wizard.y + 'px';
+
             if (!state.gameOver) {
                 window.requestAnimationFrame(gameLoop);
             } else {
                 alert('Game over');
             }
+        }
+
+        function onKeyDown(e) {
+            state.keys[e.code] = true;
+        }
+
+        function onKeyUp(e) {
+            state.keys[e.code] = false;
         }
     </script>
 </body>

@@ -31,6 +31,16 @@
             game.playScreen.classList.remove('hidden');
 
             // Add wizard
+            window.requestAnimationFrame(gameLoop);
+        }
+
+        function gameLoop() {
+            console.log('loop');
+            if (!state.gameOver) {
+                window.requestAnimationFrame(gameLoop);
+            } else {
+                alert('Game over');
+            }
         }
     </script>
 </body>

@@ -13,10 +13,12 @@
         <div class="play-screen hidden"></div>
     </div>
 
-    <script src="init.js"></script>
+    <script src="gameState.js"></script>
+    <script src="gameFactory.js"></script>
     <script>
         // Current game state
-        let state = {};
+        let getState = gameStateFactory();
+        let state = getState();
         
         // Current game DOM elements
         let game = gameFactory();
